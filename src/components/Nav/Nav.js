@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {
+	Container,
 	Collapse,
 	Navbar,
 	NavbarToggler,
@@ -8,37 +9,40 @@ import {
 	NavItem,
 	NavLink
 } from 'reactstrap';
-}
-import "./Nav.css";
 
 export default class MyNav extends Component {
 	constructor(props) {
 		super(props);
 		
-		this.toggle = this.toggle.bind(this);
+		this.toggleNavbar = this.toggleNavbar.bind(this);
 		this.state = {
-			isOpen: false
+			collapsed: true
 		};
 	}
-	toggle() {
+	toggleNavbar() {
 		this.setState({
-			isOpen: !this.state.isOpen
+			collapsed: !this.state.collapsed
 		});
 	}
 	render() {
 		return (
-			<Navbar color="light" light expand="md">
-				<NavbarBrand href="/">Motive Massage</NavbarBrand>
-		)
+			<Navbar color="dark" dark>
+			<Container>
+				<NavbarBrand href="/" className="mr-4">Motive Massage</NavbarBrand>
+				<NavbarToggler onClick={this.toggleNavbar} className="mr-auto"/>
+				<Collapse isOpen={!this.state.collapsed} navbar>
+					<Nav navbar>
+						<NavItem>
+							<NavLink href="/something/">Something</NavLink>
+						</NavItem>
+						<NavItem>
+							<NavLink href="/somethingesle/">Something else</NavLink>
+						</NavItem>
+					</Nav>
+				</Collapse>
+				</Container>
+			</Navbar>
+		);
 	}
 }
 
-const Nav = () => (
-  <Navbar className="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a className="navbar-brand" href="/">
-      Motive Massage
-    </a>
-  </nav>
-);
-
-export default Nav;

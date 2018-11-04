@@ -1,9 +1,10 @@
-.navbar-light a{
+.navbar-dark a{
 	font-family: 'Dancing Script', cursive;
 	font-size: 2em!important;
-	
+	line-height: 1;
+	font-weight: 500;
 	}
-
-.bg-light {
+	
+.bg-dark {
 	background-color: #04548B!important;
 }
